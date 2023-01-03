@@ -3,15 +3,13 @@ import type { UserRole } from '@/shared/enums';
 import type { Model, Optional } from 'sequelize';
 
 export interface IPublicUserAttributes extends IDataEntity {
-  fullName: string;
-  userName: Nullable<string>;
-  email: string;
+  firstName: string;
+  lastName: Nullable<string>;
+  email: string; 
   role: UserRole;
   emailVerified: Nullable<Date>;
-  phoneVerified: boolean;
-  isOnboardingFinished: boolean;
-  image: Nullable<string>;
   phone: string;
+  discount: Nullable<number>;
   otp: Nullable<string>;
   otpExpiredAt: Nullable<Date>;
 }
@@ -24,12 +22,9 @@ export interface IUserAttributes extends IPublicUserAttributes, Record<string, u
 export type IUserCreationAttributes = Optional<
   IUserAttributes,
   | 'id'
-  | 'userName'
-  | 'status'
+  | 'lastName'
   | 'emailVerified'
   | 'phoneVerified'
-  | 'isOnboardingFinished'
-  | 'image'
   | 'otp'
   | 'otpExpiredAt'
   | 'createdAt'
